@@ -1,0 +1,86 @@
+
+    .tableContainer{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom:20px;        
+    }
+    
+    legend{
+        font-size:1.5em;
+        
+    }
+
+    h1{
+        font-size: 2em;
+        text-align: center;
+    }
+
+    table{
+        width:60%;
+        margin:auto;
+        border:1px solid black;
+    }
+    tr{
+        background-color: rgba(32, 178, 171, 0.596);
+        text-align: center;
+        font-size:1.5em;
+    }
+
+    img{
+        width:100px;
+        height:100px;
+        border-radius: 20px;
+    }
+
+    table{
+        width:60%;
+        margin:auto
+    }
+    .tableHeader{
+        background-color: lightgreen;
+    }
+
+    .col{
+        display:flex;
+        justify-content: center;
+    }
+    td, th{
+        border:1px solid black;
+    }
+    .thumbnail, .title, .price, .id{
+        text-align: center;
+    }
+
+    
+    .productFormSection{
+        display:flex;
+        justify-content: center;
+    }
+    #submitBtn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border:1px solid black;
+        border-radius: 10px;
+        width:100px;
+        height:40px;
+        background-color: lightseagreen;
+        box-shadow: 2px 2px black;
+        cursor:pointer;
+    }
+    #submitBtn:hover{
+        transition: 1s;
+        box-shadow: 3px 3px lightslategray;
+        background-color: rgba(32, 178, 171, 0.521);
+        color:black;
+        font-size:18px;
+    }
+
+    #productForm > div{
+        text-align: end;
+        width:50%;
+        margin:10px;
+        font-weight: bolder;
+        text-transform: uppercase;
+    }

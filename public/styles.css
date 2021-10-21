@@ -1,0 +1,284 @@
+:root {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+}
+
+.chatContainer {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 80%;
+  height: 30vh;
+  background-color: #42c492;
+  padding: 10px;
+  margin: 40px auto;
+  border-radius: 10px;
+}
+
+.chatContainer .userContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 20%;
+}
+
+.chatContainer .chatArea {
+  width: 85%;
+  height: 90%;
+  background-color: whitesmoke;
+  margin: 10px auto;
+  font-size: 20px;
+  overflow-x: auto;
+  border-radius: 10px;
+}
+
+.chatContainer .chatBoxContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 20%;
+}
+
+.chatContainer .chatBoxContainer #chatBox {
+  width: 400px;
+}
+
+.chatContainer .conectedUsers {
+  position: absolute;
+  background-color: #42c492;
+  width: 150px;
+  height: 40px;
+  left: 0;
+  top: 0;
+}
+
+.chatContainer .userName {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 1.5s;
+  transition: 1.5s;
+  position: absolute;
+  font-weight: bolder;
+  top: -28px;
+  right: 0;
+  width: 350px;
+  height: 40px;
+  background-color: #42c492;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.chatContainer .messageBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.chatContainer .messageBox .messageInfo {
+  padding: 0 15px;
+}
+
+.chatContainer .messageBox .messageInfo .date {
+  color: brown;
+}
+
+.chatContainer .messageBox .messageInfo .userTag {
+  color: blue;
+  font-weight: bolder;
+}
+
+.chatContainer .messageBox .messageInfo:placeholder-shown {
+  color: violet;
+}
+
+.chatContainer .messageBox .messageText {
+  padding: 0 30px;
+  color: green;
+  font-style: italic;
+}
+
+.chatContainer .myMsg {
+  text-align: right;
+  border: 0.5px solid rgba(32, 178, 171, 0.315);
+  background-color: rgba(32, 178, 171, 0.164);
+}
+
+.chatContainer .otherMsg {
+  text-align: left;
+  border: 0.5px solid rgba(240, 128, 128, 0.5);
+  background-color: rgba(240, 128, 128, 0.274);
+}
+
+#productForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 60%;
+  border: 1px solid rgba(35, 197, 209, 0.774);
+  background-color: rgba(144, 238, 144, 0.384);
+  padding: 10px;
+  margin: 0;
+}
+
+header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background-color: rgba(35, 197, 209, 0.205);
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(35, 197, 209, 0.774);
+  text-transform: uppercase;
+}
+
+.tableContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 20px;
+}
+
+legend {
+  font-size: 1.5em;
+}
+
+h1 {
+  font-size: 2em;
+  text-align: center;
+}
+
+table {
+  width: 60%;
+  margin: auto;
+  border: 1px solid black;
+}
+
+tr {
+  background-color: rgba(32, 178, 171, 0.596);
+  text-align: center;
+  font-size: 1.5em;
+}
+
+img {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+}
+
+table {
+  width: 60%;
+  margin: auto;
+}
+
+.tableHeader {
+  background-color: lightgreen;
+}
+
+.col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+td, th {
+  border: 1px solid black;
+}
+
+.thumbnail, .title, .price, .id {
+  text-align: center;
+}
+
+.productFormSection {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#submitBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 100px;
+  height: 40px;
+  background-color: lightseagreen;
+  -webkit-box-shadow: 2px 2px black;
+          box-shadow: 2px 2px black;
+  cursor: pointer;
+}
+
+#submitBtn:hover {
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-box-shadow: 3px 3px lightslategray;
+          box-shadow: 3px 3px lightslategray;
+  background-color: rgba(32, 178, 171, 0.521);
+  color: black;
+  font-size: 18px;
+}
+
+#productForm > div {
+  text-align: end;
+  width: 50%;
+  margin: 10px;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+/*# sourceMappingURL=styles.css.map */
