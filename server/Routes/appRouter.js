@@ -6,10 +6,16 @@ const productCRUD = require('../Controllers/products_crud.js')
 
 
 appRouter.get('/home', async(req, res)=>{
-    const productos = await productDB.readAll('products', "*");
+    const productos = await productDB.readAll('products');
+    let toRender = productos.map(x=>({
+        id:x.id,
+        title:x.title,
+        price:x.price,
+        thumbnail:x.thumbnail
+    }))
     try{
     if(productos.length != 0) {
-        res.render('main', {products: productos, exist:true})
+        res.render('main', {products: toRender, exist:true})
     }else{
         res.render('main', {exist:false})
     }

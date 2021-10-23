@@ -18,7 +18,6 @@ const savedInfo = (title, price, thumbnail) => {
 };
 
 socket.on("sentProduct", (data) => {
-  console.log(data)
   showProduct(data);
 });
 
@@ -40,7 +39,7 @@ function showProduct(data) {
           `;
     let tableContent = data.map(x => `
              <tr>
-              <th scope="row" class='id'>${x._id}</th>
+              <th scope="row" class='id'>${x.id}</th>
               <td class='title'>${x.title}</td>
               <td class='price'>${x.price}</td>
               <td class='thumbnail'><img src=${x.thumbnail} alt=${x.title} ></td>
@@ -55,8 +54,8 @@ function showProduct(data) {
     mockDiv.innerHTML=tableHeader + tableBody;
   
     tableContainer.innerHTML="";
-    tableContainer.appendChild(mockDiv)
-    console.log(mockDiv)
+
+    tableContainer.appendChild(mockDiv);
   }
   else{
     tableContainer.innerHTML=`<span>No hay productos!</span>`

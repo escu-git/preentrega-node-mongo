@@ -1,33 +1,37 @@
 const productDB = require('../Controllers/db.js');
-const {ProductModel} = require('../../Database/mongodb')
-const table = 'mensajes';
+const {ProductModel} = require('../../Database/mongodb');
+const { Product } = require('./classes.js');
+const collection = 'messages';
 let messageHistory=[];
 
 async function manageNewProduct(data, socket){
     const{title, price, thumbnail}=data;
-    const save = await new ProductModel({title:title, price:price, thumbnail:thumbnail});
+    const newProduct = new Product(title, price, thumbnail);
+    let lastId = await ProductModel.count({})
+    newProduct.productId(lastId);
+    const save = await new ProductModel(newProduct);
     await save.save();
-    const allProducts = await ProductModel.find({})
+    const allProducts = await ProductModel.find()
     socket.emit('sentProduct', allProducts);
 }
 
 //Function to manage new message coming from online chat.
 async function manageNewMessage(msg, socket, io){
-    const date = new Date().toLocaleDateString('en-GB');
+    const date = new Date().toLocaleDateString('es-AR');
     const messageData ={
         userId:socket.id,
         message:msg.msg,
         userName:msg.user,
         date:date.toString(),
     }
-    await productDB.insert(table, messageData)
-    messageHistory = await productDB.readAll(table, "*");
+    await productDB.insert(collection, messageData)
+    messageHistory = await productDB.readAll(collection);
     io.sockets.emit('showMessage', messageHistory)
 }
 
 async function persistentHistory(socket){
     try{
-        let chat = await productDB.readAll(table, "*")
+        let chat = await productDB.readAll(collection)
         messageHistory = chat;
         socket.emit('showMessage', messageHistory)
     }catch(err){

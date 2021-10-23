@@ -22,7 +22,7 @@ chatSocket.on('showMessage', data=>{
             <span class='userTag'>${x.userName}:</span>
         </div>
         <div class='messageText'>
-            <span>${x.message}</span>
+            <span>${x.msg}</span>
         </div>
     </div>
     `)}

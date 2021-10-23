@@ -1,13 +1,12 @@
 const {Product} = require('../helpers/classes');
 const productDB = require('./db.js');
-const table = 'products';
+const collection = 'products';
 const {ProductModel} = require('../../Database/mongodb');
 
 const productCRUD = {
     create: async(req, res)=>{
         try{
             const savedProduct = await productDB.insert(req.body);
-
             res.status(200).json({message:`Producto id:'${savedProduct._id}' creado...`, data:savedProduct})
         }catch(err){
             console.log(err)
@@ -56,17 +55,17 @@ const productCRUD = {
     update: async(req, res)=>{
         try{
             const {id} = req.params;
-            const productIndex = await productDB.readOne(table, id);
+            const productIndex = await productDB.readOne(collection, id);
             const productAttributes = Object.entries(req.body);
             productAttributes.forEach(async(x)=>{
                 let attr = x[0];
                 let newValue = x[1];
                 if(x !== null){
-                    await productDB.update(table, id, attr, newValue )
+                    await productDB.update(collection, id, attr, newValue )
                 }
-            })
+            });
 
-            const newQuery = await productDB.readOne(table, id);
+            const newQuery = await productDB.readOne(collection, id);
             res.status(200).json({before:productIndex, after:newQuery })
         }catch(err){
             res.status(400).json({error: err})
