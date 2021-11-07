@@ -281,4 +281,13 @@ td, th {
   font-weight: bolder;
   text-transform: uppercase;
 }
-/*# sourceMappingURL=styles.css.map */
+
+.notFoundSection{
+  color:rgb(24, 116, 111);
+  width:100%;
+  display:flex;
+  justify-content: center;
+  align-items:center;
+  flex-direction: column;
+  text-transform: uppercase;
+}

@@ -17,7 +17,8 @@ const productMocker = async(req, res)=>{
         }))
         res.render('main', {products:toRender, exist:true})
     }else{
-        res.render('notFound')
+        res.render('main', { exist:false})
+
     }
 }
 
