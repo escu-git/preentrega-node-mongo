@@ -1,9 +1,8 @@
 const express = require('express');
 const productDB = require('../Controllers/db.js');
 const appRouter = express.Router();
-const productCRUD = require('../Controllers/products_crud.js')
-
-
+const productCRUD = require('../Controllers/products_crud.js');
+const productMocker = require('../../mock/products-mock')
 
 appRouter.get('/home', async(req, res)=>{
     const productos = await productDB.readAll('products');
@@ -23,6 +22,8 @@ appRouter.get('/home', async(req, res)=>{
         res.status(400).json({error:err})
     }
 })
+
+appRouter.get('/productos/vista-test/:cant?', productMocker)
 
 appRouter.get('/productos/listar/:id?', productCRUD.list);
 
