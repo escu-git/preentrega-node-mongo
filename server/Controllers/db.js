@@ -1,6 +1,8 @@
 const {mariaDB, sqLite3} = require('../../Database/db_config.js')
 const db = require('knex');
 const {ProductModel, MessageModel} = require('../../Database/mongodb');
+const {normalizr, normalize, denormalize, user, mensajes} = require('../Normalizr/index');
+
 
 const productDB = {
     insert: async(table, data)=>{
@@ -11,8 +13,13 @@ const productDB = {
             saveInMongo = await save.save();
             return save
         }else{
-            const {userId, message, userName, date} = data;
-            const newMessage = {userId: userId, msg:message, userName: userName, date:date};
+            const {userId, message, date, name, surname, alias, avatar, email} = data;
+            const newMessage = {user:{ name:name, surname:surname, alias:alias, avatar:avatar, email:email}, msg:message, date:date, userId:userId};
+
+            let normalizedMessages = normalize(newMessage, mensajes)
+            console.log(`Pre normalize: ${JSON.stringify(newMessage).length}`)
+            console.log(`Post normalize:${JSON.stringify(normalizedMessages).length}`)
+
             let save = await new MessageModel(newMessage);
             saveInMongo = await save.save();
             return save

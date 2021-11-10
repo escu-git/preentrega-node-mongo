@@ -86,5 +86,10 @@
         border:0.5px solid rgba(240, 128, 128, 0.5);
         background-color: rgba(240, 128, 128, 0.274);
     }
-
+    #userInfoArea{
+        width:100%;
+        display:flex;
+        flex-direction: row;
+        
+    }
 }

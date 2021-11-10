@@ -8,10 +8,11 @@ const Schema = {
         id:Number
     }),
     message:  new mongoose.Schema({
+        user:{type:Object, required:true},
         userId:{type:String, required:true},
         msg:{type:String, required:true, max:[300, 'Max length is 300 characters']},
-        userName:{type:String, required:true, max:[50, 'Max length is 50 characters']},
-        date:String
+        // userName:{type:String, required:true, max:[50, 'Max length is 50 characters']},
+        date:{type:String}
     })
       
 }     

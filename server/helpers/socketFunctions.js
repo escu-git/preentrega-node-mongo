@@ -21,7 +21,12 @@ async function manageNewMessage(msg, socket, io){
     const messageData ={
         userId:socket.id,
         message:msg.msg,
-        userName:msg.user,
+        email:msg.email,
+        name:msg.name,
+        surname:msg.surname,
+        alias:msg.alias,
+        avatar:msg.avatar,
+        age:msg.age,
         date:date.toString(),
     }
     await productDB.insert(collection, messageData)
@@ -31,7 +36,7 @@ async function manageNewMessage(msg, socket, io){
 
 async function persistentHistory(socket){
     try{
-        let chat = await productDB.readAll(collection)
+        let chat = await productDB.readAll(collection);
         messageHistory = chat;
         socket.emit('showMessage', messageHistory)
     }catch(err){
