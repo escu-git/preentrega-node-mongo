@@ -8,5 +8,6 @@ async function mongodb(){
 
 const ProductModel = mongoose.model('products', Schema.product)
 const MessageModel = mongoose.model('messages', Schema.message);
+const UserModel = mongoose.model('users', Schema.user)
 
-module.exports = {mongodb, ProductModel, MessageModel};
+module.exports = {mongodb, ProductModel, MessageModel, UserModel};

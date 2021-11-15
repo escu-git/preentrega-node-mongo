@@ -1,7 +1,7 @@
 const express = require('express');
 const productDB = require('../Controllers/db.js');
 const appRouter = express.Router();
-const productCRUD = require('../Controllers/products_crud.js');
+const productCRUD = require('../Controllers/crud_controller.js');
 const productMocker = require('../../mock/products-mock')
 
 appRouter.get('/home', async(req, res)=>{
@@ -14,9 +14,10 @@ appRouter.get('/home', async(req, res)=>{
     }))
     try{
     if(productos.length != 0) {
-        res.render('main', {products: toRender, exist:true})
+        // res.render('main', {products: toRender, exist:true})
+        res.status(200).json({data:toRender})
     }else{
-        res.render('main', {exist:false})
+        res.status(200).json({data:toRender})
     }
     }catch(err){
         res.status(400).json({error:err})

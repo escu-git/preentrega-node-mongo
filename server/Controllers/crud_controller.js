@@ -1,12 +1,17 @@
 const {Product} = require('../helpers/classes');
-const productDB = require('./db.js');
+const dbManager = require('./db.js');
 const collection = 'products';
 const {ProductModel} = require('../../Database/mongodb');
 
-const productCRUD = {
+const crud_controller = {
     create: async(req, res)=>{
         try{
-            const savedProduct = await productDB.insert(req.body);
+            const{title, price, thumbnail}=req.body;
+            const postedProduct = new Product(title, price, thumbnail);
+            const dbSearch = await dbManager.readAll(collection);
+            dbSearch.length == 0 ? postedProduct.productId(0) : postedProduct.productId(dbSearch.length);
+            console.log(postedProduct)
+            const savedProduct = await dbManager.insert('products', postedProduct);
             res.status(200).json({message:`Producto id:'${savedProduct._id}' creado...`, data:savedProduct})
         }catch(err){
             console.log(err)
@@ -55,17 +60,17 @@ const productCRUD = {
     update: async(req, res)=>{
         try{
             const {id} = req.params;
-            const productIndex = await productDB.readOne(collection, id);
+            const productIndex = await dbManager.readOne(collection, id);
             const productAttributes = Object.entries(req.body);
             productAttributes.forEach(async(x)=>{
                 let attr = x[0];
                 let newValue = x[1];
                 if(x !== null){
-                    await productDB.update(collection, id, attr, newValue )
+                    await dbManager.update(collection, id, attr, newValue )
                 }
             });
 
-            const newQuery = await productDB.readOne(collection, id);
+            const newQuery = await dbManager.readOne(collection, id);
             res.status(200).json({before:productIndex, after:newQuery })
         }catch(err){
             res.status(400).json({error: err})
@@ -74,4 +79,4 @@ const productCRUD = {
 
 }
 
-module.exports=productCRUD;
+module.exports=crud_controller;

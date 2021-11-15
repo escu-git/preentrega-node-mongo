@@ -1,18 +1,18 @@
 const {mariaDB, sqLite3} = require('../../Database/db_config.js')
 const db = require('knex');
-const {ProductModel, MessageModel} = require('../../Database/mongodb');
+const {ProductModel, MessageModel, UserModel} = require('../../Database/mongodb');
 const {normalizr, normalize, denormalize, user, mensajes} = require('../Normalizr/index');
 
 
-const productDB = {
+const dbManager = {
     insert: async(table, data)=>{
         if(table=='products'){
-            const {title, price, thumbnail} = data;
-            const newProduct = {title:title, price:price, thumbnail:thumbnail};
+            const {title, price, thumbnail, id} = data;
+            const newProduct = {title:title, price:price, thumbnail:thumbnail, id:id};
             let save = await new ProductModel(newProduct) 
             saveInMongo = await save.save();
             return save
-        }else{
+        }else if(table=='messages'){
             const {userId, message, date, name, surname, alias, avatar, email} = data;
             const newMessage = {user:{ name:name, surname:surname, alias:alias, avatar:avatar, email:email}, msg:message, date:date, userId:userId};
 
@@ -23,6 +23,10 @@ const productDB = {
             let save = await new MessageModel(newMessage);
             saveInMongo = await save.save();
             return save
+        }else if(table=='users'){
+            const save = await new UserModel(data);
+            saveInMongo = await save.save();
+            return save;
         }
     },
 
@@ -52,4 +56,4 @@ const productDB = {
     }
 }
 
-module.exports= productDB;
+module.exports= dbManager;

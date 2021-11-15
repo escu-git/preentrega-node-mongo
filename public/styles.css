@@ -132,6 +132,17 @@
   background-color: rgba(240, 128, 128, 0.274);
 }
 
+.chatContainer #userInfoArea {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
 #productForm {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -281,13 +292,4 @@ td, th {
   font-weight: bolder;
   text-transform: uppercase;
 }
-
-.notFoundSection{
-  color:rgb(24, 116, 111);
-  width:100%;
-  display:flex;
-  justify-content: center;
-  align-items:center;
-  flex-direction: column;
-  text-transform: uppercase;
-}
+/*# sourceMappingURL=styles.css.map */
